@@ -13,18 +13,18 @@ function App() {
   function userCoords(position) {
     let userlat = position.coords.latitude
     let userlon = position.coords.longitude
-    localStorage.setItem('lat', userlat);
-    localStorage.setItem('lon', userlon);
-    // setLat(userlat);
-    // setLon(userlon);
+    setLat(userlat);
+    setLon(userlon);
+    // localStorage.setItem('lat', lat);
+    // localStorage.setItem('lon', lon);
   }
   const getUserAddress = async () => {
     let url = `https://api.opencagedata.com/geocode/v1/json?key=ed693e08c1f7453e8083381cc90004b5&q=${lat}%2C+${lon}&pretty=1&no_annotations=1`
     const loc = await fetch(url)
     const data = await loc.json()
     console.log("user address -", data);
-    localStorage.setItem('setUserAddress', data.results[0].formatted);
-    // setUserAddress(data.results[0].formatted)
+    setUserAddress(data.results[0].formatted)
+    // localStorage.setItem('setUserAddress', data.results[0].formatted);
   }
   const handleGetUserAddress = () => {
     getUserAddress()
