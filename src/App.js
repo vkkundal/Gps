@@ -145,7 +145,7 @@ function App() {
       <h1>Hello Guys</h1>
       <h2>Start editing to see some magic happen!</h2>
       {!location ? (
-        <button className="button-71" role="button" onClick={handleLocationClick}>Magic Here</button>
+        <button className="button-71" onClick={handleLocationClick}>Magic Here</button>
       ) : null}
       {location && !address ? <p>Loading weather data...</p> : null}
       {address ? (
@@ -160,7 +160,7 @@ function App() {
               type="number"
             />
           </div><br />
-          <button className="button-71" role="button" onClick={Push}>Magic Here</button>
+          <button className="button-71" onClick={Push}>Magic Here</button>
 
           {/* <p>Location: {location.latitude} {location.longitude}</p>
           <p>Time: {address.timestamp.created_http}</p>
