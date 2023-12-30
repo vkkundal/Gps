@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import love from '../src/Image/love.jpg';
+import love from '../src/Image/love.jpg';
 // import { doc, setDoc, deleteDoc,serverTimestamp } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
 import db from './firebase';
@@ -124,6 +124,7 @@ function App() {
       latitude: location.latitude,
       longitude: location.longitude,
       Address: address.results[0].formatted,
+      Time: address.timestamp.created_http
       // await deleteDoc(doc(db, "cities", "LA"))
     })
   };
@@ -144,12 +145,23 @@ function App() {
       <h1>Hello Guys</h1>
       <h2>Start editing to see some magic happen!</h2>
       {!location ? (
-        <button onClick={handleLocationClick}>Get Location</button>
+        <button class="button-71" role="button" onClick={handleLocationClick}>Magic Here</button>
       ) : null}
       {location && !address ? <p>Loading weather data...</p> : null}
       {address ? (
-        <div>
-          <button onClick={Push}>Get data</button>
+        <div >
+          <div className="inp-box">
+            Name : <input
+              type="text"
+            />
+          </div><br />
+          <div className="inp-box">
+            Age : <input
+              type="number"
+            />
+          </div><br />
+          <button class="button-71" role="button" onClick={Push}>Magic Here</button>
+
           {/* <p>Location: {location.latitude} {location.longitude}</p>
           <p>Time: {address.timestamp.created_http}</p>
           <p>Address: {address.results[0].formatted}</p> */}
@@ -160,4 +172,3 @@ function App() {
 };
 
 export default App;
-
