@@ -16,7 +16,7 @@ import './App.css';
 //   // const watchID = geo.watchPosition(userCoords)
 //   geo.watchPosition(userCoords)
 //   function userCoords(position) {
-//     // console.log(position,"vinod");
+//     // console.log(position,"data");
 //     let userlat = position.coords.latitude
 //     let userlon = position.coords.longitude
 //     setLat(userlat);
@@ -88,7 +88,7 @@ import './App.css';
 function App() {
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
-  console.log(location, "vinod");
+    console.log(location, "data");
   function handleLocationClick() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
@@ -126,7 +126,8 @@ function App() {
       Address: address.results[0].formatted,
       Time: address.timestamp.created_http
       // await deleteDoc(doc(db, "cities", "LA"))
-    })
+    })   
+    alert("SUccessfully sybmit")
   };
   // }
   // Add a new document in collection "cities"
@@ -139,9 +140,11 @@ function App() {
   //   handleLocationClick();
   //   Push();
   // }
-
+  // let result = handleLocationClick();
+  // Push(result); 
   return (
-    <div className="App">
+  <>
+  <div className="App">
       <h1>Hello Guys</h1>
       <h2>Start editing to see some magic happen!</h2>
       {!location ? (
@@ -150,25 +153,28 @@ function App() {
       {location && !address ? <p>Loading weather data...</p> : null}
       {address ? (
         <div >
-          <div className="inp-box">
+          {/* <div className="inp-box">
             Name : <input
               type="text"
+              placeholder='name'             
             />
           </div><br />
           <div className="inp-box">
             Age : <input
               type="number"
+              placeholder='age'             
             />
           </div><br />
-          <button className="button-71" onClick={Push}>Magic Here</button>
+          <button className="button-71" onClick={Push}>Magic Here</button> */}
 
           {/* <p>Location: {location.latitude} {location.longitude}</p>
           <p>Time: {address.timestamp.created_http}</p>
           <p>Address: {address.results[0].formatted}</p> */}
+          <button className="button-71" onClick={Push}>Magic Here</button> 
         </div>
       ) : null}
-    </div>
+    </div>   
+  </>    
   );
 };
-
 export default App;
