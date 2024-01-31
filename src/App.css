@@ -90,6 +90,9 @@
 }
 
 /* CSS */
+#button-71 {
+  display: none;
+}
 .button-71 {
   background-color: #0078d0;
   border: 0;

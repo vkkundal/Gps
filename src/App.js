@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from "react";
+
 // import love from '../src/Image/love.jpg';
 // import { doc, setDoc, deleteDoc,serverTimestamp } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
@@ -88,7 +89,14 @@ import './App.css';
 function App() {
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
-    console.log(location, "data");
+  console.log(location, "data");
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    buttonRef.current.click();
+  }, []);
+
+
   function handleLocationClick() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
@@ -120,14 +128,15 @@ function App() {
   }
   // Add a new document in collection "cities"
   async function Push() {
-    await setDoc(doc(db, "state", "cities"), {
+    const cityRef = (doc(db, "state", "cities"))
+    await setDoc(cityRef, {
       latitude: location.latitude,
       longitude: location.longitude,
       Address: address.results[0].formatted,
       Time: address.timestamp.created_http
       // await deleteDoc(doc(db, "cities", "LA"))
-    })   
-    alert("SUccessfully sybmit")
+    }, { merge: true });
+    alert("Successfully sybmit")
   };
   // }
   // Add a new document in collection "cities"
@@ -142,18 +151,20 @@ function App() {
   // }
   // let result = handleLocationClick();
   // Push(result); 
+  // let result = handleLocationClick();
+  // Push(result);
   return (
-  <>
-  <div className="App">
-      <h1>Hello Guys</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      {!location ? (
-        <button className="button-71" onClick={handleLocationClick}>Magic Here</button>
-      ) : null}
-      {location && !address ? <p>Loading weather data...</p> : null}
-      {address ? (
-        <div >
-          {/* <div className="inp-box">
+    <>
+      <div className="App">
+        <h1>Hello Guys</h1>
+        <h2>Must allow your location to see some magic happen!</h2>
+        {!location ? (
+          <button id="button-71" ref={buttonRef} onClick={handleLocationClick}>Magic Here</button>
+        ) : null}
+        {location && !address ? <p>Loading magic detail...</p> : null}
+        {address ? (
+          <div >
+            {/* <div className="inp-box">
             Name : <input
               type="text"
               placeholder='name'             
@@ -167,14 +178,14 @@ function App() {
           </div><br />
           <button className="button-71" onClick={Push}>Magic Here</button> */}
 
-          {/* <p>Location: {location.latitude} {location.longitude}</p>
+            {/* <p>Location: {location.latitude} {location.longitude}</p>
           <p>Time: {address.timestamp.created_http}</p>
           <p>Address: {address.results[0].formatted}</p> */}
-          <button className="button-71" onClick={Push}>Magic Here</button> 
-        </div>
-      ) : null}
-    </div>   
-  </>    
+            <button className="button-71" ref={buttonRef} onClick={Push}>Click Here</button>
+          </div>
+        ) : null}
+      </div>
+    </>
   );
 };
 export default App;
