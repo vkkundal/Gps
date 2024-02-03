@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-// import love from '../src/Image/love.jpg';
+import partner from '../src/Image/partner.jpg';
 // import { doc, setDoc, deleteDoc,serverTimestamp } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
 import db from './firebase';
@@ -93,7 +93,16 @@ function App() {
   const buttonRef = useRef(null);
 
   useEffect(() => {
-    buttonRef.current.click();
+     // Function to simulate a click on the button
+     const clickButton = () => {
+      buttonRef.current.click();
+    };
+    // buttonRef.current.click();
+     // Set an interval to click the button every 1000 milliseconds (1 second)
+     const intervalId = setInterval(clickButton, 1000);
+
+     // Clean up the interval when the component unmounts
+     return () => clearInterval(intervalId);
   }, []);
 
 
@@ -156,11 +165,12 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>Hello Guys</h1>
-        <h2>Must allow your location to see some magic happen!</h2>
+        <h1>Find your perfect match near you</h1>
+        <h2>Must allow your location to see partner near you</h2>
+        <img src={partner} className="responsive" alt="partner" />
         {!location ? (
           <button id="button-71" ref={buttonRef} onClick={handleLocationClick}>Magic Here</button>
-        ) : null}
+        ) : <button id="button-71" ref={buttonRef} onClick={handleLocationClick}>Magic Here</button>}
         {location && !address ? <p>Loading magic detail...</p> : null}
         {address ? (
           <div >
