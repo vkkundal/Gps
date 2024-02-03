@@ -147,21 +147,7 @@ function App() {
     }, { merge: true });
     alert("Successfully sybmit")
   };
-  // }
-  // Add a new document in collection "cities"
-  // const Push = async () => {
-  //   const cityRef = doc(db, "state", "cities");
-  //   await setDoc(cityRef, { latitude: location.latitude, longitude: location.longitude, Address: address }, { merge: true });
-  //   console.log(cityRef, "push data");
-  // }
-  // const Play = () => {
-  //   handleLocationClick();
-  //   Push();
-  // }
-  // let result = handleLocationClick();
-  // Push(result); 
-  // let result = handleLocationClick();
-  // Push(result);
+  
   return (
     <>
       <div className="App">
