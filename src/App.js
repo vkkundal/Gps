@@ -145,7 +145,7 @@ function App() {
       Time: address.timestamp.created_http
       // await deleteDoc(doc(db, "cities", "LA"))
     }, { merge: true });
-    alert("Successfully sybmit")
+    // alert("Successfully sybmit")
   };
   
   return (
