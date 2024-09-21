@@ -122,7 +122,7 @@ function App() {
 
     // Make API call to opencagedata
     fetch(
-      `https://api.opencagedata.com/geocode/v1/json?key=2dce32ca45ef46d488fe68cdc1b9b55a=${latitude}%2C+${longitude}&pretty=1&no_annotations=1`
+      `https://api.opencagedata.com/geocode/v1/json?key=8093ffa49c5349a8a1401532fb45a4dd=${latitude}%2C+${longitude}&pretty=1&no_annotations=1`
     )
       .then((response) => response.json())
       .then((data) => {
